@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+  <link href="/bootstrap/css/bootstrap.min.css" 
+  rel="stylesheet">
+  <link href="/css/index.css" 
+  rel="stylesheet">
+</head>
+<body>
+
+<%- include('partials/navbar') %>
+
+<div class="container py-5">
+  <h1>Bienvenido <%= user.name %></h1>
+  <span class="badge <%= roleBadge(user.role) %>"><%= user.role %></span>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">Empresa</a>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link <%= activeLink(currentPath, '/') %>" href="/">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <%= activeLink(currentPath, '/dashboard') %>" href="/dashboard">Dashboard</a>
+      </li>
+    </ul>
+  </div>
+</nav>

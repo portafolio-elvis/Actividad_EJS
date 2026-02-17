@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title %></title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+
+    <div class="container py-5">
+      <h1 class="mb-4"><%= title %></h1>
+
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="card shadow text-center">
+            <div class="card-body">
+              <h5>Ventas</h5>
+              <h2 class="text-success">$<%= metrics.ventas %></h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card shadow text-center">
+            <div class="card-body">
+              <h5>Pedidos</h5>
+              <h2 class="text-primary"><%= metrics.pedidos %></h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card shadow text-center">
+            <div class="card-body">
+              <h5>Tareas</h5>
+              <h2 class="text-danger"><%= metrics.tareasPendientes %></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow">
+        <div class="card-body">
+          <h5>Ventas Mensuales</h5>
+          <canvas id="ventasChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script src="/charts-js/chart.umd.js"></script>
+    <script>
+      const ventas = <%- JSON.stringify(ventasMensuales) %>;
+      const meses = <%- JSON.stringify(meses) %>;
+
+      const ctx = document.getElementById('ventasChart');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: meses,
+          datasets: [{
+            label: 'Ventas',
+            data: ventas,
+            borderWidth: 1
+          }]
+        }
+      });
+    </script>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>
